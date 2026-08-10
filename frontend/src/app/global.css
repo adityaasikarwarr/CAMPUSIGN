@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "../styles/theme.css";
+@import "../styles/animations.css";
+
+:root {
+  --background: #050505;
+
+  --surface: #0b0d0f;
+
+  --primary: #5b8cff;
+
+  --secondary: #9b7bff;
+
+  --accent: #64e8ff;
+
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+
+  color: white;
+
+  font-family: Arial, Helvetica, sans-serif;
+}

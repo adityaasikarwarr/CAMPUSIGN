@@ -1,0 +1,17 @@
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(20px);
+
+  border-radius: 24px;
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px rgba(91, 140, 255, 0.35);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(155, 123, 255, 0.35);
+}
