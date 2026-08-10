@@ -4,6 +4,7 @@ import Features from "@/components/landing/Features";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Technology from "@/components/landing/Technology";
 import Footer from "@/components/layout/Footer";
+import IntroScreen from "@/components/landing/IntroScreen";
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ overflow-hidden
 bg-[#f5f1e9]
 "
     >
+      <IntroScreen />
+      
       <Navbar />
 
       <Hero />
