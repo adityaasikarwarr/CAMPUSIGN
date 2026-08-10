@@ -15,3 +15,43 @@
 .glow-purple {
   box-shadow: 0 0 40px rgba(155, 123, 255, 0.35);
 }
+
+.ai-background {
+
+background:
+
+radial-gradient(
+circle at top left,
+rgba(91,140,255,0.25),
+transparent 40%
+),
+
+radial-gradient(
+circle at bottom right,
+rgba(155,123,255,0.25),
+transparent 40%
+),
+
+linear-gradient(
+135deg,
+#020617,
+#050505
+);
+
+}
+
+.ambient-glass {
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.12);
+
+backdrop-filter:
+blur(30px);
+
+box-shadow:
+0 30px 80px rgba(0,0,0,0.45);
+
+}

@@ -1,33 +1,134 @@
 @import "tailwindcss";
-@import "../styles/theme.css";
-@import "../styles/animations.css";
+
 
 :root {
-  --background: #050505;
 
-  --surface: #0b0d0f;
+  --background: #f4efe7;
 
-  --primary: #5b8cff;
+  --foreground: #111111;
 
-  --secondary: #9b7bff;
+  --glass: rgba(255,255,255,0.45);
 
-  --accent: #64e8ff;
+  --glass-dark: rgba(15,15,15,0.75);
 
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --border:
+  rgba(255,255,255,0.6);
+
 }
+
+
 
 * {
-  box-sizing: border-box;
+
+  box-sizing:border-box;
+
 }
+
+
 
 html {
-  scroll-behavior: smooth;
+
+  scroll-behavior:smooth;
+
 }
 
+
+
 body {
-  background: var(--background);
 
-  color: white;
 
-  font-family: Arial, Helvetica, sans-serif;
+  min-height:100vh;
+
+
+  color:var(--foreground);
+
+
+  background:
+
+  linear-gradient(
+
+    135deg,
+
+    #f8f3ea 0%,
+
+    #eee6da 45%,
+
+    #ded5c8 100%
+
+  );
+
+
+  font-family:
+
+  Arial,
+
+  Helvetica,
+
+  sans-serif;
+
+
+}
+
+
+
+
+
+
+/* Soft moving light */
+
+body::before {
+
+
+content:"";
+
+
+position:fixed;
+
+
+inset:0;
+
+
+pointer-events:none;
+
+
+background:
+
+
+radial-gradient(
+
+circle at 20% 20%,
+
+rgba(255,255,255,0.8),
+
+transparent 35%
+
+),
+
+
+radial-gradient(
+
+circle at 80% 10%,
+
+rgba(255,255,255,0.7),
+
+transparent 30%
+
+),
+
+
+radial-gradient(
+
+circle at 50% 90%,
+
+rgba(0,0,0,0.08),
+
+transparent 35%
+
+);
+
+
+
+z-index:-1;
+
+
 }
