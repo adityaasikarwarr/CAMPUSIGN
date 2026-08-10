@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, Languages, Mic } from "lucide-react";
 
-import AIVisual from "./AIVisual";
 import Card from "@/components/ui/Card";
 
 export default function Hero() {
@@ -230,10 +229,6 @@ relative
 
 "
         >
-          {/* THREE JS AREA */}
-
-          <AIVisual />
-
           {/* Translation Floating Card */}
 
           <motion.div
