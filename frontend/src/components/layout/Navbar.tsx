@@ -22,6 +22,10 @@ const navItems = [
     name: "Technology",
     href: "#technology",
   },
+  {
+    name: "About",
+    href: "#about",
+  },
 ];
 
 export default function Navbar() {
@@ -31,7 +35,7 @@ export default function Navbar() {
 
   const [active, setActive] = useState("home");
 
-  // Navbar shrink on scroll
+  // Shrink navbar
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +49,7 @@ export default function Navbar() {
     };
   }, []);
 
-  // Active section detection
+  // Active section observer
 
   useEffect(() => {
     const sections = navItems.map((item) => document.querySelector(item.href));
@@ -87,7 +91,6 @@ left-1/2
 
 z-50
 
-
 transition-all
 
 duration-700
@@ -95,16 +98,12 @@ duration-700
 ease-out
 
 
-
 ${scrolled ? "w-[85%] max-w-5xl scale-95" : "w-[92%] max-w-7xl scale-100"}
-
-
 
 `}
     >
       <div
         className={`
-
 
 flex
 
@@ -113,16 +112,12 @@ items-center
 justify-between
 
 
-
 rounded-full
-
 
 
 bg-white/35
 
-
 backdrop-blur-3xl
-
 
 
 border
@@ -130,9 +125,7 @@ border
 border-white/70
 
 
-
 shadow-[0_20px_60px_rgba(0,0,0,0.12)]
-
 
 
 transition-all
@@ -140,9 +133,7 @@ transition-all
 duration-700
 
 
-
 ${scrolled ? "px-5 py-2" : "px-7 py-4"}
-
 
 
 `}
@@ -173,9 +164,7 @@ h-10
 
 rounded-full
 
-
 bg-black
-
 
 flex
 
@@ -183,14 +172,11 @@ items-center
 
 justify-center
 
-
 transition-all
 
 duration-700
 
-
 group-hover:rotate-180
-
 
 "
           >
@@ -210,15 +196,12 @@ tracking-tight
 
 text-black
 
-
 transition-all
 
 duration-500
 
 
-
 ${scrolled ? "text-lg" : "text-xl"}
-
 
 `}
           >
@@ -226,7 +209,7 @@ ${scrolled ? "text-lg" : "text-xl"}
           </span>
         </div>
 
-        {/* DESKTOP NAVIGATION */}
+        {/* DESKTOP NAV */}
 
         <div
           className="
@@ -251,37 +234,30 @@ gap-3
 
               className={`
 
-
 relative
-
-overflow-hidden
-
-
 
 px-5
 
 py-2.5
 
 
-
 rounded-full
-
 
 
 border
 
 
-
 backdrop-blur-xl
 
+
+text-sm
+
+font-medium
 
 
 transition-all
 
 duration-500
-
-ease-out
-
 
 
 hover:-translate-y-1
@@ -298,7 +274,7 @@ text-white
 
 border-black
 
-shadow-[0_12px_30px_rgba(0,0,0,0.18)]
+shadow-[0_12px_30px_rgba(0,0,0,.18)]
 
 `
     : `
@@ -309,35 +285,20 @@ text-black/70
 
 border-white/70
 
-shadow-[0_8px_25px_rgba(0,0,0,0.06)]
+shadow-[0_8px_25px_rgba(0,0,0,.06)]
 
 `
 }
 
 
-
 `}
             >
-              <span
-                className="
-
-relative
-
-z-10
-
-text-sm
-
-font-medium
-
-"
-              >
-                {item.name}
-              </span>
+              {item.name}
             </a>
           ))}
         </div>
 
-        {/* BUTTON CAPSULE */}
+        {/* BUTTONS */}
 
         <div
           className="
@@ -392,22 +353,17 @@ gap-2
 
           className="
 
-
 lg:hidden
-
 
 w-10
 
 h-10
 
-
 rounded-full
-
 
 bg-black
 
 text-white
-
 
 flex
 
@@ -415,18 +371,13 @@ items-center
 
 justify-center
 
-
-transition-all
-
-duration-300
-
+transition
 
 hover:scale-110
 
-
 "
         >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -436,20 +387,16 @@ hover:scale-110
         <div
           className="
 
-
 absolute
 
 top-20
 
 right-0
 
-
 w-72
 
 
-
 rounded-3xl
-
 
 
 bg-white/40
@@ -458,29 +405,15 @@ bg-white/40
 backdrop-blur-3xl
 
 
-
 border
 
 border-white/70
 
 
-
 p-5
 
 
-
-shadow-[0_30px_80px_rgba(0,0,0,0.18)]
-
-
-
-animate-in
-
-fade-in
-
-zoom-in-95
-
-duration-500
-
+shadow-[0_30px_80px_rgba(0,0,0,.18)]
 
 "
         >
@@ -505,19 +438,15 @@ gap-3
 
                 className="
 
-
 px-5
 
 py-3.5
 
 
-
 rounded-full
 
 
-
 bg-white/40
-
 
 
 border
@@ -525,15 +454,10 @@ border
 border-white/70
 
 
-
 text-black/80
 
 
-
 transition-all
-
-duration-300
-
 
 
 hover:bg-black
@@ -541,10 +465,7 @@ hover:bg-black
 hover:text-white
 
 
-
 hover:translate-x-2
-
-
 
 "
               >

@@ -1,13 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
-const links = ["Home", "Features", "How It Works", "Technology"];
+const links = [
+  {
+    name: "Home",
+    href: "#home",
+  },
+  {
+    name: "Features",
+    href: "#features",
+  },
+  {
+    name: "How It Works",
+    href: "#how",
+  },
+  {
+    name: "Technology",
+    href: "#technology",
+  },
+];
 
 export default function Footer() {
   return (
     <footer
+      id="about"
+
       className="
 relative
 overflow-hidden
@@ -17,6 +36,7 @@ bg-[#f5f1e9]
 px-6
 pt-24
 pb-10
+
 "
     >
       {/* Floating Glass Lights */}
@@ -24,17 +44,21 @@ pb-10
       <motion.div
         animate={{
           x: [-60, 60, -60],
+
           y: [0, 40, 0],
         }}
 
         transition={{
           duration: 14,
+
           repeat: Infinity,
+
           ease: "easeInOut",
         }}
 
         className="
 absolute
+
 top-10
 left-20
 
@@ -53,11 +77,13 @@ blur-[140px]
       <motion.div
         animate={{
           x: [60, -60, 60],
+
           y: [0, -30, 0],
         }}
 
         transition={{
           duration: 16,
+
           repeat: Infinity,
         }}
 
@@ -86,15 +112,18 @@ z-10
 
 max-w-7xl
 mx-auto
+
 "
       >
-        {/* MAIN GLASS FOOTER */}
+        {/* MAIN GLASS CARD */}
 
         <div
           className="
+
 rounded-[45px]
 
 p-10
+
 lg:p-14
 
 
@@ -115,7 +144,6 @@ grid
 md:grid-cols-3
 
 gap-12
-lg:gap-16
 
 "
         >
@@ -127,10 +155,12 @@ lg:gap-16
 flex
 items-center
 gap-4
+
 "
             >
               <div
                 className="
+
 w-14
 h-14
 
@@ -144,23 +174,18 @@ flex
 items-center
 justify-center
 
-shadow-lg
-
 "
               >
-                <Sparkles size={25} />
+                <Sparkles size={22} />
               </div>
 
               <div>
                 <h3
                   className="
 text-2xl
-
 font-semibold
-
-text-black
-
 tracking-tight
+
 "
                 >
                   CampusSign AI
@@ -169,9 +194,7 @@ tracking-tight
                 <p
                   className="
 text-sm
-
 text-black/40
-
 mt-1
 
 "
@@ -183,6 +206,7 @@ mt-1
 
             <p
               className="
+
 mt-7
 
 text-black/60
@@ -204,10 +228,7 @@ max-w-sm
             <h4
               className="
 text-lg
-
 font-semibold
-
-text-black
 
 "
             >
@@ -217,18 +238,18 @@ text-black
             <div
               className="
 mt-6
-
 space-y-4
 
 "
             >
               {links.map((link) => (
                 <a
-                  key={link}
+                  key={link.name}
 
-                  href="#"
+                  href={link.href}
 
                   className="
+
 group
 
 flex
@@ -247,7 +268,7 @@ duration-300
 
 "
                 >
-                  {link}
+                  {link.name}
 
                   <ArrowUpRight
                     size={14}
@@ -266,16 +287,13 @@ transition
             </div>
           </div>
 
-          {/* FOUNDER */}
+          {/* CREATOR */}
 
           <div>
             <h4
               className="
 text-lg
-
 font-semibold
-
-text-black
 
 "
             >
@@ -284,17 +302,21 @@ text-black
 
             <div
               className="
+
 mt-6
 
 p-5
 
 rounded-3xl
 
+
 bg-white/50
+
 
 border
 
 border-white/80
+
 
 backdrop-blur-xl
 
@@ -303,10 +325,7 @@ backdrop-blur-xl
               <h5
                 className="
 text-xl
-
 font-semibold
-
-text-black
 
 "
               >
@@ -315,7 +334,7 @@ text-black
 
               <p
                 className="
-mt-2
+mt-3
 
 text-sm
 
@@ -335,8 +354,6 @@ mt-5
 
 flex
 
-flex-col
-
 gap-3
 
 "
@@ -347,36 +364,40 @@ gap-3
                   target="_blank"
 
                   className="
-flex
 
-items-center
-
-justify-between
+flex-1
 
 px-4
 
 py-3
 
+
 rounded-2xl
 
+
 bg-white/60
+
 
 border
 
 border-white/80
 
+
 text-sm
 
 text-black/60
 
+
 hover:text-black
 
+
 transition
+
+text-center
 
 "
                 >
                   GitHub
-                  <ArrowUpRight size={15} />
                 </a>
 
                 <a
@@ -385,47 +406,53 @@ transition
                   target="_blank"
 
                   className="
-flex
 
-items-center
-
-justify-between
+flex-1
 
 px-4
 
 py-3
 
+
 rounded-2xl
 
+
 bg-white/60
+
 
 border
 
 border-white/80
 
+
 text-sm
 
 text-black/60
 
+
 hover:text-black
 
+
 transition
+
+text-center
 
 "
                 >
                   LinkedIn
-                  <ArrowUpRight size={15} />
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* BOTTOM */}
 
         <div
           className="
+
 mt-10
+
 
 flex
 
@@ -434,6 +461,7 @@ justify-between
 flex-wrap
 
 gap-4
+
 
 text-sm
 
