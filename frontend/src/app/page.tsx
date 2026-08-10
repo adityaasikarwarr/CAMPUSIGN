@@ -3,7 +3,7 @@ import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Technology from "@/components/landing/Technology";
-
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ bg-[#f5f1e9]
 
       <Technology />
 
-    
+      <Footer />
     </main>
   );
 }
