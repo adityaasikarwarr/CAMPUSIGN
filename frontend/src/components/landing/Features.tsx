@@ -43,59 +43,33 @@ export default function Features() {
 
 relative
 
-px-6
+py-32
 
-pb-32
+px-6
 
 overflow-hidden
 
-bg-[#f5f1e9]
+bg-[#090d14]
+
+text-white
 
 "
     >
-      {/* SECTION MERGE LIGHT */}
-
-      <div
-        className="
-
-absolute
-
--top-40
-
-left-0
-
-w-full
-
-h-72
-
-bg-gradient-to-b
-
-from-transparent
-
-via-white/40
-
-to-transparent
-
-blur-3xl
-
-pointer-events-none
-
-"
-      />
-
-      {/* MOVING GLASS AURA */}
+      {/* BACKGROUND AI GLOW */}
 
       <motion.div
         animate={{
-          x: [-50, 50, -50],
+          x: [-80, 80, -80],
 
-          y: [0, 40, 0],
+          y: [0, 50, 0],
         }}
 
         transition={{
           duration: 14,
 
           repeat: Infinity,
+
+          ease: "easeInOut",
         }}
 
         className="
@@ -106,15 +80,51 @@ top-20
 
 left-20
 
-w-[450px]
+w-[500px]
 
-h-[450px]
+h-[500px]
 
 rounded-full
 
-bg-white/60
+bg-white/10
 
-blur-[130px]
+blur-[140px]
+
+"
+      />
+
+      <motion.div
+        animate={{
+          x: [60, -60, 60],
+
+          y: [0, -40, 0],
+        }}
+
+        transition={{
+          duration: 16,
+
+          repeat: Infinity,
+
+          ease: "easeInOut",
+        }}
+
+        className="
+
+absolute
+
+right-20
+
+bottom-20
+
+w-[400px]
+
+h-[400px]
+
+rounded-full
+
+bg-white/10
+
+blur-[140px]
 
 "
       />
@@ -130,8 +140,6 @@ max-w-7xl
 
 mx-auto
 
-pt-20
-
 "
       >
         {/* HEADER */}
@@ -139,11 +147,13 @@ pt-20
         <motion.div
           initial={{
             opacity: 0,
+
             y: 40,
           }}
 
           whileInView={{
             opacity: 1,
+
             y: 0,
           }}
 
@@ -154,6 +164,12 @@ pt-20
           transition={{
             duration: 0.8,
           }}
+
+          className="
+
+max-w-3xl
+
+"
         >
           <div
             className="
@@ -166,19 +182,17 @@ py-2
 
 rounded-full
 
-bg-white/50
+bg-white/10
 
 border
 
-border-white/80
+border-white/20
 
 backdrop-blur-xl
 
 text-sm
 
-text-black/60
-
-shadow-sm
+text-white/70
 
 "
           >
@@ -200,8 +214,6 @@ leading-[1]
 
 tracking-tight
 
-text-black
-
 "
           >
             Technology That Understands
@@ -209,7 +221,7 @@ text-black
             <span
               className="
 
-text-black/40
+text-white/40
 
 "
             >
@@ -228,7 +240,7 @@ text-lg
 
 leading-relaxed
 
-text-black/60
+text-white/60
 
 "
           >
@@ -237,7 +249,7 @@ text-black/60
           </p>
         </motion.div>
 
-        {/* FEATURE GRID */}
+        {/* FEATURE CARDS */}
 
         <div
           className="
@@ -261,11 +273,13 @@ mt-20
 
                 initial={{
                   opacity: 0,
-                  y: 40,
+
+                  y: 50,
                 }}
 
                 whileInView={{
                   opacity: 1,
+
                   y: 0,
                 }}
 
@@ -275,10 +289,12 @@ mt-20
 
                 transition={{
                   delay: index * 0.15,
+
+                  duration: 0.7,
                 }}
 
                 whileHover={{
-                  y: -8,
+                  y: -10,
                 }}
 
                 className="
@@ -291,26 +307,21 @@ rounded-[35px]
 
 p-8
 
-
-bg-white/45
+bg-white/10
 
 border
 
-border-white/80
-
+border-white/20
 
 backdrop-blur-2xl
 
+shadow-[0_30px_90px_rgba(0,0,0,.35)]
 
-shadow-[0_25px_80px_rgba(0,0,0,.08)]
-
+group
 
 transition-all
 
 duration-500
-
-
-group
 
 "
               >
@@ -325,7 +336,7 @@ inset-0
 
 bg-gradient-to-br
 
-from-white/70
+from-white/20
 
 via-transparent
 
@@ -371,9 +382,9 @@ h-14
 
 rounded-2xl
 
-bg-black
+bg-white
 
-text-white
+text-black
 
 flex
 
@@ -381,8 +392,7 @@ items-center
 
 justify-center
 
-
-group-hover:rotate-6
+group-hover:scale-110
 
 transition
 
@@ -390,13 +400,13 @@ duration-500
 
 "
                     >
-                      <Icon size={24} />
+                      <Icon size={25} />
                     </div>
 
                     <span
                       className="
 
-text-black/30
+text-white/30
 
 font-medium
 
@@ -425,7 +435,7 @@ font-semibold
 
 mt-4
 
-text-black/60
+text-white/60
 
 leading-relaxed
 
