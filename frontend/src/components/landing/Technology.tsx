@@ -1,26 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-import { Eye, Brain, Volume2, Cpu } from "lucide-react";
+import { Eye, Brain, Cpu, Mic, Sparkles } from "lucide-react";
 
 const technologies = [
   {
     title: "Computer Vision",
-    desc: "Advanced vision models detect and understand sign gestures in real time.",
+    desc: "Advanced AI vision models detect and understand hand gestures in real time.",
     icon: Eye,
   },
 
   {
-    title: "Language Intelligence",
-    desc: "AI converts gestures into meaningful human language.",
+    title: "AI Intelligence",
+    desc: "Deep learning models analyze gestures and understand communication context.",
     icon: Brain,
   },
 
   {
-    title: "Voice AI",
-    desc: "Natural voice synthesis enables effortless communication.",
-    icon: Volume2,
+    title: "Gesture Processing",
+    desc: "Complex hand movements are converted into meaningful language patterns.",
+    icon: Cpu,
+  },
+
+  {
+    title: "Voice Intelligence",
+    desc: "AI generates smooth and natural voice communication instantly.",
+    icon: Mic,
   },
 ];
 
@@ -30,43 +35,73 @@ export default function Technology() {
       id="technology"
 
       className="
-
 relative
 
-py-32
-
 px-6
+py-32
 
 overflow-hidden
 
-bg-[#090d14]
+bg-black
 
 text-white
 
 "
     >
-      {/* BACKGROUND GLOW */}
+      {/* Smooth Cream To Black Transition */}
+
+      <div
+        className="
+absolute
+
+-top-40
+
+left-0
+
+w-full
+
+h-72
+
+bg-gradient-to-b
+
+from-[#f5f1e9]
+
+via-black/40
+
+to-black
+
+blur-3xl
+
+pointer-events-none
+
+"
+      />
+
+      {/* Moving White Glass Glow */}
 
       <motion.div
         animate={{
-          x: [-80, 80, -80],
+          x: [-60, 60, -60],
 
           y: [0, 40, 0],
+
+          scale: [1, 1.1, 1],
         }}
 
         transition={{
-          duration: 15,
+          duration: 14,
 
           repeat: Infinity,
+
+          ease: "easeInOut",
         }}
 
         className="
-
 absolute
 
 top-20
 
-left-10
+left-20
 
 w-[500px]
 
@@ -83,24 +118,25 @@ blur-[150px]
 
       <motion.div
         animate={{
-          x: [80, -80, 80],
+          x: [60, -60, 60],
 
-          y: [0, -50, 0],
+          y: [0, -30, 0],
         }}
 
         transition={{
-          duration: 18,
+          duration: 16,
 
           repeat: Infinity,
+
+          ease: "easeInOut",
         }}
 
         className="
-
 absolute
 
-right-10
+right-20
 
-bottom-10
+bottom-20
 
 w-[450px]
 
@@ -117,7 +153,6 @@ blur-[140px]
 
       <div
         className="
-
 relative
 
 z-10
@@ -143,18 +178,21 @@ mx-auto
             y: 0,
           }}
 
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
 
-          className="
-
-max-w-3xl
-
-"
+          transition={{
+            duration: 0.8,
+          }}
         >
           <div
             className="
-
 inline-flex
+
+items-center
+
+gap-2
 
 px-5
 
@@ -162,13 +200,17 @@ py-2
 
 rounded-full
 
+
 bg-white/10
+
 
 border
 
 border-white/20
 
+
 backdrop-blur-xl
+
 
 text-sm
 
@@ -176,12 +218,12 @@ text-white/70
 
 "
           >
-            AI Technology
+            <Sparkles size={15} />
+            Our Technology
           </div>
 
           <h2
             className="
-
 mt-8
 
 text-6xl
@@ -196,214 +238,61 @@ leading-[1]
 
 "
           >
-            The Intelligence
-            <br />
-            <span className="text-white/40">Behind CampusSign</span>
+            Powered By
+            <span
+              className="
+text-white/40
+
+"
+            >
+              Artificial Intelligence
+            </span>
           </h2>
 
           <p
             className="
-
 mt-6
 
 max-w-xl
 
 text-lg
 
-text-white/60
-
 leading-relaxed
 
-"
-          >
-            Powered by computer vision, artificial intelligence and voice
-            technology to create seamless communication.
-          </p>
-        </motion.div>
-
-        {/* AI CORE */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-
-            scale: 0.9,
-          }}
-
-          whileInView={{
-            opacity: 1,
-
-            scale: 1,
-          }}
-
-          viewport={{ once: true }}
-
-          transition={{
-            duration: 1,
-          }}
-
-          className="
-
-mt-20
-
-max-w-4xl
-
-mx-auto
-
-"
-        >
-          <div
-            className="
-
-relative
-
-rounded-[50px]
-
-p-12
-
-bg-white/10
-
-border
-
-border-white/20
-
-backdrop-blur-3xl
-
-shadow-[0_40px_120px_rgba(0,0,0,.5)]
-
-overflow-hidden
-
-"
-          >
-            {/* MOVING LIGHT */}
-
-            <motion.div
-              animate={{
-                x: ["-100%", "100%"],
-              }}
-
-              transition={{
-                duration: 6,
-
-                repeat: Infinity,
-              }}
-
-              className="
-
-absolute
-
-inset-0
-
-bg-gradient-to-r
-
-from-transparent
-
-via-white/20
-
-to-transparent
-
-"
-            />
-
-            <div
-              className="
-
-relative
-
-z-10
-
-flex
-
-flex-col
-
-items-center
-
-text-center
-
-"
-            >
-              <div
-                className="
-
-w-24
-
-h-24
-
-rounded-full
-
-bg-white
-
-text-black
-
-flex
-
-items-center
-
-justify-center
-
-"
-              >
-                <Cpu size={42} />
-              </div>
-
-              <h3
-                className="
-
-mt-8
-
-text-3xl
-
-font-semibold
-
-"
-              >
-                CampusSign AI Engine
-              </h3>
-
-              <p
-                className="
-
-mt-4
-
-max-w-lg
-
 text-white/60
 
 "
-              >
-                Real-time AI pipeline connecting gesture recognition,
-                translation and voice output.
-              </p>
-            </div>
-          </div>
+          >
+            CampusSign AI combines computer vision, machine learning and voice
+            intelligence to create accessible communication.
+          </p>
         </motion.div>
 
         {/* TECHNOLOGY CARDS */}
 
         <div
           className="
+mt-20
 
 grid
 
-md:grid-cols-3
+md:grid-cols-2
 
 gap-8
 
-mt-16
-
 "
         >
-          {technologies.map((item, index) => {
-            const Icon = item.icon;
+          {technologies.map((tech, index) => {
+            const Icon = tech.icon;
 
             return (
               <motion.div
-                key={item.title}
+                key={tech.title}
 
                 initial={{
                   opacity: 0,
 
-                  y: 40,
+                  y: 50,
                 }}
 
                 whileInView={{
@@ -412,9 +301,13 @@ mt-16
                   y: 0,
                 }}
 
-                viewport={{ once: true }}
+                viewport={{
+                  once: true,
+                }}
 
                 transition={{
+                  duration: 0.7,
+
                   delay: index * 0.15,
                 }}
 
@@ -423,37 +316,100 @@ mt-16
                 }}
 
                 className="
+relative
+
+overflow-hidden
+
 
 rounded-[35px]
 
+
 p-8
 
+
+
 bg-white/10
+
 
 border
 
 border-white/20
 
-backdrop-blur-2xl
 
-transition-all
+
+backdrop-blur-3xl
+
+
+
+shadow-[0_30px_100px_rgba(255,255,255,.08)]
+
+
+group
+
+"
+              >
+                {/* Glass Shine */}
+
+                <div
+                  className="
+absolute
+
+inset-0
+
+
+bg-gradient-to-br
+
+from-white/20
+
+to-transparent
+
+
+opacity-0
+
+
+group-hover:opacity-100
+
+
+transition
 
 duration-500
 
 "
-              >
+                />
+
                 <div
                   className="
+relative
 
+z-10
+
+"
+                >
+                  <div
+                    className="
+flex
+
+justify-between
+
+items-center
+
+"
+                  >
+                    <div
+                      className="
 w-14
 
 h-14
 
+
 rounded-2xl
+
 
 bg-white
 
+
 text-black
+
 
 flex
 
@@ -461,28 +417,45 @@ items-center
 
 justify-center
 
+transition-all
+
+duration-500
+
+
+group-hover:rotate-6
+
 "
-                >
-                  <Icon />
-                </div>
+                    >
+                      <Icon size={25} />
+                    </div>
 
-                <h3
-                  className="
-
-mt-8
-
-text-xl
+                    <span
+                      className="
+text-white/30
 
 font-semibold
 
 "
-                >
-                  {item.title}
-                </h3>
+                    >
+                      AI
+                    </span>
+                  </div>
 
-                <p
-                  className="
+                  <h3
+                    className="
+mt-8
 
+text-2xl
+
+font-semibold
+
+"
+                  >
+                    {tech.title}
+                  </h3>
+
+                  <p
+                    className="
 mt-4
 
 text-white/60
@@ -490,13 +463,69 @@ text-white/60
 leading-relaxed
 
 "
-                >
-                  {item.desc}
-                </p>
+                  >
+                    {tech.desc}
+                  </p>
+                </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* AI SYSTEM CAPSULE */}
+
+        <motion.div
+          animate={{
+            y: [0, -10, 0],
+          }}
+
+          transition={{
+            duration: 5,
+
+            repeat: Infinity,
+          }}
+
+          className="
+mt-16
+
+mx-auto
+
+max-w-xl
+
+
+px-8
+
+py-5
+
+
+
+rounded-full
+
+
+
+bg-white/10
+
+
+border
+
+border-white/20
+
+
+
+backdrop-blur-xl
+
+
+
+text-center
+
+
+
+text-white/70
+
+"
+        >
+          Computer Vision + AI + Voice = Accessible Communication
+        </motion.div>
       </div>
     </section>
   );

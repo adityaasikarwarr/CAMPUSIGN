@@ -1,32 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-import { Camera, Brain, MessageCircle, ArrowRight } from "lucide-react";
+import { Camera, Brain, Languages, Volume2, Sparkles } from "lucide-react";
 
 const steps = [
   {
     number: "01",
     title: "Capture Gesture",
-    description:
-      "Camera technology detects hand movements and sign language patterns in real time.",
+    desc: "Camera vision detects hand movements and sign language patterns in real time.",
     icon: Camera,
   },
 
   {
     number: "02",
     title: "AI Understanding",
-    description:
-      "Deep learning models analyze gestures and convert them into meaningful language.",
+    desc: "Advanced AI models analyze gestures and understand the user's intent.",
     icon: Brain,
   },
 
   {
     number: "03",
-    title: "Instant Communication",
-    description:
-      "Translated messages are delivered through text and natural voice output.",
-    icon: MessageCircle,
+    title: "Instant Translation",
+    desc: "The system converts gestures into meaningful text communication.",
+    icon: Languages,
+  },
+
+  {
+    number: "04",
+    title: "Voice Generation",
+    desc: "Translated messages are converted into natural voice output.",
+    icon: Volume2,
   },
 ];
 
@@ -36,12 +39,11 @@ export default function HowItWorks() {
       id="how"
 
       className="
-
 relative
 
-py-32
-
 px-6
+
+py-32
 
 overflow-hidden
 
@@ -49,30 +51,54 @@ bg-[#f5f1e9]
 
 "
     >
-      {/* BACKGROUND GLASS LIGHT */}
+      {/* Smooth section merge */}
+
+      <div
+        className="
+absolute
+
+-top-40
+
+left-0
+
+w-full
+
+h-72
+
+bg-gradient-to-b
+
+from-transparent
+
+via-white/40
+
+to-transparent
+
+blur-3xl
+
+"
+      />
+
+      {/* Moving glow */}
 
       <motion.div
         animate={{
-          x: [-60, 60, -60],
+          x: [-50, 50, -50],
 
           y: [0, 40, 0],
         }}
 
         transition={{
-          duration: 14,
+          duration: 15,
 
           repeat: Infinity,
-
-          ease: "easeInOut",
         }}
 
         className="
-
 absolute
 
 top-20
 
-left-20
+right-20
 
 w-[450px]
 
@@ -80,54 +106,16 @@ h-[450px]
 
 rounded-full
 
-bg-white/60
+bg-white/70
 
-blur-[130px]
-
-"
-      />
-
-      <motion.div
-        animate={{
-          x: [60, -60, 60],
-
-          y: [0, -30, 0],
-        }}
-
-        transition={{
-          duration: 16,
-
-          repeat: Infinity,
-
-          ease: "easeInOut",
-        }}
-
-        className="
-
-absolute
-
-right-20
-
-bottom-10
-
-w-[400px]
-
-h-[400px]
-
-rounded-full
-
-bg-white/50
-
-blur-[130px]
+blur-[140px]
 
 "
       />
 
       <div
         className="
-
 relative
-
 z-10
 
 max-w-7xl
@@ -141,13 +129,11 @@ mx-auto
         <motion.div
           initial={{
             opacity: 0,
-
             y: 40,
           }}
 
           whileInView={{
             opacity: 1,
-
             y: 0,
           }}
 
@@ -158,17 +144,14 @@ mx-auto
           transition={{
             duration: 0.8,
           }}
-
-          className="
-
-max-w-3xl
-
-"
         >
           <div
             className="
-
 inline-flex
+
+items-center
+
+gap-2
 
 px-5
 
@@ -190,12 +173,12 @@ text-black/60
 
 "
           >
+            <Sparkles size={15} />
             How It Works
           </div>
 
           <h2
             className="
-
 mt-8
 
 text-6xl
@@ -213,34 +196,25 @@ text-black
 "
           >
             From Gesture
-            <span
-              className="
-
-text-black/40
-
-"
-            >
-              To Communication
-            </span>
+            <span className="text-black/40">to Communication</span>
           </h2>
 
           <p
             className="
-
 mt-6
 
 max-w-xl
 
 text-lg
 
-leading-relaxed
-
 text-black/60
+
+leading-relaxed
 
 "
           >
-            CampusSign AI transforms human gestures into meaningful
-            communication using vision intelligence and language models.
+            CampusSign AI combines computer vision, artificial intelligence and
+            voice technology to create seamless communication.
           </p>
         </motion.div>
 
@@ -248,104 +222,99 @@ text-black/60
 
         <div
           className="
-
 relative
 
 mt-24
 
-grid
-
-lg:grid-cols-3
-
-gap-10
-
 "
         >
-          {/* CONNECTING LINE */}
+          {/* Connecting Line */}
 
-          <motion.div
-            initial={{
-              scaleX: 0,
-            }}
-
-            whileInView={{
-              scaleX: 1,
-            }}
-
-            viewport={{ once: true }}
-
-            transition={{
-              duration: 1.5,
-            }}
-
+          <div
             className="
-
 hidden
 
 lg:block
 
 absolute
 
-top-32
+left-1/2
 
-left-[18%]
+top-0
 
-right-[18%]
+bottom-0
 
-h-[2px]
+w-px
 
 bg-black/10
-
-origin-left
 
 "
           />
 
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-
-            return (
-              <motion.div
-                key={step.number}
-
-                initial={{
-                  opacity: 0,
-
-                  y: 50,
-                }}
-
-                whileInView={{
-                  opacity: 1,
-
-                  y: 0,
-                }}
-
-                viewport={{
-                  once: true,
-                }}
-
-                transition={{
-                  delay: index * 0.2,
-
-                  duration: 0.8,
-                }}
-
-                className="
-
-relative
-
-group
+          <div
+            className="
+space-y-12
 
 "
-              >
-                <div
-                  className="
+          >
+            {steps.map((step, index) => {
+              const Icon = step.icon;
 
+              return (
+                <motion.div
+                  key={step.number}
+
+                  initial={{
+                    opacity: 0,
+
+                    y: 60,
+                  }}
+
+                  whileInView={{
+                    opacity: 1,
+
+                    y: 0,
+                  }}
+
+                  viewport={{
+                    once: true,
+                  }}
+
+                  transition={{
+                    duration: 0.7,
+
+                    delay: index * 0.15,
+                  }}
+
+                  className={`
+
+flex
+
+items-center
+
+${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}
+
+gap-8
+
+`}
+                >
+                  {/* Glass Card */}
+
+                  <div
+                    className="
+w-full
+
+lg:w-[45%]
+
+"
+                  >
+                    <div
+                      className="
 relative
 
-rounded-[40px]
-
 p-8
+
+rounded-[35px]
 
 bg-white/45
 
@@ -355,23 +324,16 @@ border-white/80
 
 backdrop-blur-2xl
 
-shadow-[0_30px_90px_rgba(0,0,0,.08)]
+shadow-[0_30px_80px_rgba(0,0,0,.08)]
 
 overflow-hidden
 
-transition-all
-
-duration-500
-
-group-hover:-translate-y-3
+group
 
 "
-                >
-                  {/* GLASS SHINE */}
-
-                  <div
-                    className="
-
+                    >
+                      <div
+                        className="
 absolute
 
 inset-0
@@ -379,8 +341,6 @@ inset-0
 bg-gradient-to-br
 
 from-white/70
-
-via-transparent
 
 to-transparent
 
@@ -390,23 +350,18 @@ group-hover:opacity-100
 
 transition
 
-duration-500
-
 "
-                  />
+                      />
 
-                  <div
-                    className="
-
+                      <div
+                        className="
 relative
-
 z-10
 
 "
-                  >
-                    <div
-                      className="
-
+                      >
+                        <div
+                          className="
 flex
 
 justify-between
@@ -414,15 +369,14 @@ justify-between
 items-center
 
 "
-                    >
-                      <div
-                        className="
+                        >
+                          <div
+                            className="
+w-14
 
-w-16
+h-14
 
-h-16
-
-rounded-3xl
+rounded-2xl
 
 bg-black
 
@@ -434,49 +388,38 @@ items-center
 
 justify-center
 
-group-hover:scale-110
-
-transition
-
-duration-500
-
 "
-                      >
-                        <Icon size={28} />
-                      </div>
+                          >
+                            <Icon size={24} />
+                          </div>
 
-                      <span
-                        className="
-
+                          <span
+                            className="
 text-black/30
 
 font-semibold
 
-text-lg
-
 "
-                      >
-                        {step.number}
-                      </span>
-                    </div>
+                          >
+                            {step.number}
+                          </span>
+                        </div>
 
-                    <h3
-                      className="
-
-mt-10
+                        <h3
+                          className="
+mt-8
 
 text-2xl
 
 font-semibold
 
 "
-                    >
-                      {step.title}
-                    </h3>
+                        >
+                          {step.title}
+                        </h3>
 
-                    <p
-                      className="
-
+                        <p
+                          className="
 mt-4
 
 text-black/60
@@ -484,58 +427,41 @@ text-black/60
 leading-relaxed
 
 "
-                    >
-                      {step.description}
-                    </p>
+                        >
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-                {/* FLOATING ARROW */}
+                  {/* Center Dot */}
 
-                {index !== steps.length - 1 && (
                   <div
                     className="
-
 hidden
 
 lg:flex
 
-absolute
+w-6
 
-right-[-30px]
-
-top-28
-
-w-14
-
-h-14
+h-6
 
 rounded-full
 
-bg-white/60
+bg-black
 
-border
+border-4
 
-border-white/80
-
-backdrop-blur-xl
-
-items-center
-
-justify-center
-
-z-20
-
-shadow-lg
+border-[#f5f1e9]
 
 "
-                  >
-                    <ArrowRight size={20} />
-                  </div>
-                )}
-              </motion.div>
-            );
-          })}
+                  ></div>
+
+                  <div className="hidden lg:block w-[45%]" />
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
