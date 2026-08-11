@@ -24,23 +24,16 @@ export default function SignupPage() {
 
   const [form, setForm] = useState({
     name: "",
-
     email: "",
-
     password: "",
-
     role: "STUDENT" as UserRole,
 
     collegeId: "",
-
     department: "",
-
     year: "",
 
     employeeId: "",
-
     designation: "",
-
     adminCode: "",
   });
 
@@ -60,24 +53,51 @@ export default function SignupPage() {
 
       await signup(form);
 
-      if (form.role === "STUDENT") {
-        router.push("/student/dashboard");
-      } else if (form.role === "STAFF") {
-        router.push("/staff/dashboard");
-      } else {
-        router.push("/admin/dashboard");
-      }
+      if (form.role === "STUDENT") router.push("/student/dashboard");
+      else if (form.role === "STAFF") router.push("/staff/dashboard");
+      else router.push("/admin/dashboard");
     } finally {
       setLoading(false);
     }
   };
 
+  const input = `
+
+h-14
+
+w-full
+
+px-5
+
+rounded-2xl
+
+bg-white/10
+
+border
+
+border-white/20
+
+backdrop-blur-xl
+
+text-white
+
+placeholder:text-white/40
+
+outline-none
+
+transition
+
+focus:bg-white/20
+
+`;
+
   return (
     <main
       className="
+
 min-h-screen
 
-bg-[#f5f1e9]
+bg-black
 
 flex
 
@@ -87,113 +107,113 @@ justify-center
 
 px-6
 
+py-10
+
 relative
 
 overflow-hidden
 
-py-10
-
 "
     >
-      {/* GLASS LIGHT */}
-
       <motion.div
         animate={{
-          scale: [1, 1.2, 1],
+          x: [-100, 100, -100],
 
-          opacity: [0.4, 0.7, 0.4],
+          y: [0, 60, 0],
         }}
 
         transition={{
-          duration: 8,
+          duration: 15,
 
           repeat: Infinity,
         }}
 
         className="
+
 absolute
 
-w-[550px]
+w-[700px]
 
-h-[550px]
+h-[700px]
 
 rounded-full
 
-bg-white
+bg-white/10
 
-blur-[150px]
+blur-[180px]
 
 "
       />
 
       <motion.div
-        initial={{
-          opacity: 0,
+        initial={{ opacity: 0, scale: 0.95 }}
 
-          y: 40,
+        animate={{ opacity: 1, scale: 1 }}
 
-          scale: 0.95,
-        }}
-
-        animate={{
-          opacity: 1,
-
-          y: 0,
-
-          scale: 1,
-        }}
-
-        transition={{
-          duration: 0.8,
-        }}
+        transition={{ duration: 0.7 }}
 
         className="
+
 relative
 
 z-10
 
 w-full
 
-max-w-md
+max-w-4xl
 
-rounded-[42px]
 
-bg-white/45
+rounded-[50px]
+
+
+bg-white/[0.08]
+
 
 border
 
-border-white/80
+border-white/20
+
 
 backdrop-blur-3xl
 
-shadow-[0_40px_100px_rgba(0,0,0,.12)]
+
+shadow-[0_40px_120px_rgba(0,0,0,.7)]
+
 
 p-10
 
+lg:p-14
+
 "
       >
-        {/* HEADER */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* LEFT BRAND */}
 
-        <div
-          className="
+          <div
+            className="
+
 flex
 
 flex-col
 
-items-center
+justify-center
+
 "
-        >
-          <div
-            className="
-w-16
+          >
+            <div
+              className="
 
-h-16
+w-20
 
-rounded-3xl
+h-20
 
-bg-black
+rounded-[30px]
 
-text-white
+bg-white/10
+
+border
+
+border-white/30
 
 flex
 
@@ -201,106 +221,114 @@ items-center
 
 justify-center
 
-shadow-xl
+text-white
 
 "
-          >
-            <Sparkles size={30} />
-          </div>
+            >
+              <Sparkles size={35} />
+            </div>
 
-          <h1
-            className="
-mt-7
+            <h1
+              className="
 
-text-4xl
+mt-8
+
+text-5xl
 
 font-semibold
 
-text-black
+text-white
+
+tracking-tight
 
 "
-          >
-            Create Account
-          </h1>
+            >
+              Create Account
+            </h1>
 
-          <p
-            className="
-mt-2
+            <p
+              className="
 
-text-black/50
+mt-4
+
+text-white/50
+
+text-lg
+
+leading-relaxed
 
 "
-          >
-            Join CampusSign AI
-          </p>
-        </div>
+            >
+              Join CampusSign AI and experience AI powered sign language
+              communication.
+            </p>
 
-        <form
-          onSubmit={handleSubmit}
+            <div
+              className="
 
-          className="
 mt-10
 
-space-y-5
+text-white/40
+
+text-sm
 
 "
-        >
-          <input
-            placeholder="Full Name"
+            >
+              AI Vision • Translation • Accessibility
+            </div>
+          </div>
 
-            value={form.name}
+          {/* RIGHT FORM */}
 
-            onChange={(e) => updateField("name", e.target.value)}
-
-            className="
-input-glass
-
-"
-          />
-
-          <input
-            type="email"
-
-            placeholder="Email Address"
-
-            value={form.email}
-
-            onChange={(e) => updateField("email", e.target.value)}
+          <form
+            onSubmit={handleSubmit}
 
             className="
-input-glass
 
-"
-          />
+space-y-4
 
-          <div
-            className="
-relative
 "
           >
             <input
-              type={showPassword ? "text" : "password"}
+              placeholder="Full Name"
 
-              placeholder="Password"
+              className={input}
 
-              value={form.password}
+              value={form.name}
 
-              onChange={(e) => updateField("password", e.target.value)}
-
-              className="
-input-glass
-
-pr-14
-
-"
+              onChange={(e) => updateField("name", e.target.value)}
             />
 
-            <button
-              type="button"
+            <input
+              placeholder="Email Address"
 
-              onClick={() => setShowPassword(!showPassword)}
+              className={input}
 
-              className="
+              value={form.email}
+
+              onChange={(e) => updateField("email", e.target.value)}
+            />
+
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+
+                placeholder="Password"
+
+                className={`${input} pr-14`}
+
+                value={form.password}
+
+                onChange={(e) => updateField("password", e.target.value)}
+              />
+
+              <button
+                type="button"
+
+                onClick={() => setShowPassword(!showPassword)}
+
+                className="
+
 absolute
 
 right-5
@@ -309,30 +337,23 @@ top-1/2
 
 -translate-y-1/2
 
-text-black/40
+text-white/50
 
 "
-            >
-              {showPassword ? <EyeOff size={19} /> : <Eye size={19} />}
-            </button>
-          </div>
+              >
+                {showPassword ? <EyeOff size={19} /> : <Eye size={19} />}
+              </button>
+            </div>
 
-          {/* ROLE */}
+            <div className="relative">
+              <button
+                type="button"
 
-          <div
-            className="
-relative
+                onClick={() => setRoleOpen(!roleOpen)}
 
-z-50
-"
-          >
-            <button
-              type="button"
+                className={`
 
-              onClick={() => setRoleOpen(!roleOpen)}
-
-              className="
-input-glass
+${input}
 
 flex
 
@@ -340,80 +361,63 @@ items-center
 
 justify-between
 
-"
-            >
-              <span>
+text-white
+
+`}
+              >
                 {form.role === "STUDENT"
                   ? "Student"
                   : form.role === "STAFF"
                     ? "Staff"
                     : "Admin"}
-              </span>
 
-              <ChevronDown size={20} />
-            </button>
+                <ChevronDown size={20} />
+              </button>
 
-            {roleOpen && (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: -10,
-                }}
+              {roleOpen && (
+                <div
+                  className="
 
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-
-                className="
 absolute
 
 top-16
+
+z-50
 
 w-full
 
 rounded-3xl
 
-bg-white/60
+bg-black/80
 
 border
 
-border-white/80
+border-white/20
 
 backdrop-blur-3xl
 
 p-2
 
-shadow-xl
-
 "
-              >
-                {[
-                  {
-                    label: "Student",
-                    value: "STUDENT",
-                  },
-                  {
-                    label: "Staff",
-                    value: "STAFF",
-                  },
-                  {
-                    label: "Admin",
-                    value: "ADMIN",
-                  },
-                ].map((item) => (
-                  <button
-                    key={item.value}
+                >
+                  {[
+                    ["Student", "STUDENT"],
+                    ["Staff", "STAFF"],
+                    ["Admin", "ADMIN"],
+                  ].map((r) => (
+                    <button
+                      key={r[1]}
 
-                    type="button"
+                      type="button"
 
-                    onClick={() => {
-                      updateField("role", item.value);
+                      onClick={() => {
+                        updateField("role", r[1]);
 
-                      setRoleOpen(false);
-                    }}
+                        setRoleOpen(false);
+                      }}
 
-                    className="
+                      className="
+
 w-full
 
 px-5
@@ -424,170 +428,93 @@ rounded-2xl
 
 text-left
 
-hover:bg-black
+text-white
 
-hover:text-white
+hover:bg-white
+
+hover:text-black
 
 transition
 
 "
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </div>
+                    >
+                      {r[0]}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
-          {/* ROLE FIELDS */}
-
-          {form.role === "STUDENT" && (
-            <>
+            <div className="grid grid-cols-2 gap-4">
               <input
                 placeholder="College ID"
 
-                value={form.collegeId}
-
-                onChange={(e) => updateField("collegeId", e.target.value)}
-
-                className="
-input-glass
-
-"
+                className={input}
               />
 
               <input
                 placeholder="Department"
 
-                value={form.department}
-
-                onChange={(e) => updateField("department", e.target.value)}
-
-                className="
-input-glass
-
-"
+                className={input}
               />
+            </div>
 
-              <input
-                placeholder="Year"
-
-                value={form.year}
-
-                onChange={(e) => updateField("year", e.target.value)}
-
-                className="
-input-glass
-
-"
-              />
-            </>
-          )}
-
-          {form.role === "STAFF" && (
-            <>
-              <input
-                placeholder="Employee ID"
-
-                value={form.employeeId}
-
-                onChange={(e) => updateField("employeeId", e.target.value)}
-
-                className="
-input-glass
-
-"
-              />
-
-              <input
-                placeholder="Department"
-
-                value={form.department}
-
-                onChange={(e) => updateField("department", e.target.value)}
-
-                className="
-input-glass
-
-"
-              />
-
-              <input
-                placeholder="Designation"
-
-                value={form.designation}
-
-                onChange={(e) => updateField("designation", e.target.value)}
-
-                className="
-input-glass
-
-"
-              />
-            </>
-          )}
-
-          {form.role === "ADMIN" && (
             <input
-              placeholder="Admin Code"
+              placeholder="Year"
 
-              value={form.adminCode}
+              className={input}
+            />
 
-              onChange={(e) => updateField("adminCode", e.target.value)}
+            <Button
+              type="submit"
+
+              loading={loading}
 
               className="
-input-glass
 
-"
-            />
-          )}
-
-          <Button
-            type="submit"
-
-            loading={loading}
-
-            className="
 w-full
 
 h-14
 
 rounded-2xl
 
-"
-          >
-            Create Account
-          </Button>
-        </form>
+mt-4
 
-        <p
-          className="
-mt-8
+"
+            >
+              Create Account
+            </Button>
+
+            <p
+              className="
 
 text-center
 
 text-sm
 
-text-black/50
+text-white/50
+
+pt-3
 
 "
-        >
-          Already have an account?
-          <Link
-            href="/auth/login"
+            >
+              Already have account?
+              <Link
+                href="/auth/login"
 
-            className="
+                className="
+
 ml-2
 
-font-medium
-
-text-black
+text-white
 
 "
-          >
-            Login
-          </Link>
-        </p>
+              >
+                Login
+              </Link>
+            </p>
+          </form>
+        </div>
       </motion.div>
     </main>
   );
