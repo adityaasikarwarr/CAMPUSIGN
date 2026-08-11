@@ -5,35 +5,54 @@ export type UserRole =
 
 
 export interface User {
-  id: string;
 
-  name: string;
+  id:string;
 
-  email: string;
+  name:string;
 
-  role: UserRole;
+  email:string;
 
-  avatar?: string;
+  role:UserRole;
+
 }
+
 
 
 export interface LoginPayload {
-  email: string;
 
-  password: string;
+  email:string;
 
-  role: UserRole;
+  password:string;
+
+  role:UserRole;
+
 }
+
 
 
 export interface SignupPayload {
 
-  name: string;
+  name:string;
 
-  email: string;
+  email:string;
 
-  password: string;
+  password:string;
 
-  role: UserRole;
+  role:UserRole;
+
+
+  collegeId?:string;
+
+  department?:string;
+
+  year?:string;
+
+
+  employeeId?:string;
+
+  designation?:string;
+
+
+  adminCode?:string;
 
 }
