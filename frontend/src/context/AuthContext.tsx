@@ -10,6 +10,8 @@ import {
 
 import { User, LoginPayload, SignupPayload } from "@/types/user";
 
+import { loginUser, signupUser, logoutUser } from "@/services/auth.service";
+
 interface AuthContextType {
   user: User | null;
 
@@ -29,7 +31,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const [loading, setLoading] = useState(true);
 
-  // Load saved user
+  // Restore logged user
 
   useEffect(() => {
     const savedUser = localStorage.getItem("campussign_user");
@@ -41,59 +43,58 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(false);
   }, []);
 
-  // Login
+  // LOGIN
 
   const login = async (data: LoginPayload) => {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    // Temporary mock user
-    // Replace with backend API later
+      const loggedUser = await loginUser(data);
 
-    const mockUser: User = {
-      id: "1",
+      localStorage.setItem("campussign_user", JSON.stringify(loggedUser));
 
-      name: data.role === "STUDENT" ? "Student User" : "Staff User",
+      setUser(loggedUser);
+    } catch (error) {
+      console.error("Login failed:", error);
 
-      email: data.email,
-
-      role: data.role,
-    };
-
-    localStorage.setItem("campussign_user", JSON.stringify(mockUser));
-
-    setUser(mockUser);
-
-    setLoading(false);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Signup
+  // SIGNUP
 
   const signup = async (data: SignupPayload) => {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const newUser: User = {
-      id: Date.now().toString(),
+      const newUser = await signupUser(data);
 
-      name: data.name,
+      localStorage.setItem("campussign_user", JSON.stringify(newUser));
 
-      email: data.email,
+      setUser(newUser);
+    } catch (error) {
+      console.error("Signup failed:", error);
 
-      role: data.role,
-    };
-
-    localStorage.setItem("campussign_user", JSON.stringify(newUser));
-
-    setUser(newUser);
-
-    setLoading(false);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Logout
+  // LOGOUT
 
-  const logout = () => {
-    localStorage.removeItem("campussign_user");
+  const logout = async () => {
+    try {
+      await logoutUser();
+    } catch (error) {
+      console.error("Logout failed:", error);
+    } finally {
+      localStorage.removeItem("campussign_user");
 
-    setUser(null);
+      setUser(null);
+    }
   };
 
   return (

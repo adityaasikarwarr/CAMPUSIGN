@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./global.css";
 
+import { AuthProvider } from "@/context/AuthContext";
+
 export const metadata: Metadata = {
   title: "CampusSign AI",
   description: "AI-powered automatic sign language translation platform",
@@ -13,9 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
-
-
