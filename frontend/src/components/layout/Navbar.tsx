@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 import Button from "@/components/ui/Button";
 
@@ -35,8 +36,6 @@ export default function Navbar() {
 
   const [active, setActive] = useState("home");
 
-  // Shrink navbar
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
@@ -48,8 +47,6 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // Active section observer
 
   useEffect(() => {
     const sections = navItems.map((item) => document.querySelector(item.href));
@@ -80,130 +77,100 @@ export default function Navbar() {
   return (
     <nav
       className={`
+      fixed
 
-fixed
+      top-5
 
-top-5
+      left-1/2
 
-left-1/2
+      -translate-x-1/2
 
--translate-x-1/2
+      z-50
 
-z-50
+      transition-all
 
-transition-all
+      duration-700
 
-duration-700
-
-ease-out
+      ease-out
 
 
-${scrolled ? "w-[85%] max-w-5xl scale-95" : "w-[92%] max-w-7xl scale-100"}
+      ${scrolled ? "w-[85%] max-w-5xl scale-95" : "w-[92%] max-w-7xl scale-100"}
 
-`}
+      `}
     >
       <div
         className={`
+        flex
 
-flex
+        items-center
 
-items-center
-
-justify-between
-
-
-rounded-full
+        justify-between
 
 
-bg-white/35
-
-backdrop-blur-3xl
+        rounded-full
 
 
-border
+        bg-white/35
 
-border-white/70
-
-
-shadow-[0_20px_60px_rgba(0,0,0,0.12)]
+        backdrop-blur-3xl
 
 
-transition-all
+        border
 
-duration-700
-
-
-${scrolled ? "px-5 py-2" : "px-7 py-4"}
+        border-white/70
 
 
-`}
+        shadow-[0_20px_60px_rgba(0,0,0,0.12)]
+
+
+        transition-all
+
+        duration-700
+
+
+        ${scrolled ? "px-5 py-2" : "px-7 py-4"}
+
+        `}
       >
         {/* LOGO */}
 
         <div
           className="
-
-flex
-
-items-center
-
-gap-3
-
-cursor-pointer
-
-group
-
-"
+          flex
+          items-center
+          gap-3
+          cursor-pointer
+          group
+          "
         >
           <div
             className="
-
-w-10
-
-h-10
-
-rounded-full
-
-bg-black
-
-flex
-
-items-center
-
-justify-center
-
-transition-all
-
-duration-700
-
-group-hover:rotate-180
-
-"
+            w-10
+            h-10
+            rounded-full
+            bg-black
+            flex
+            items-center
+            justify-center
+            transition-all
+            duration-700
+            group-hover:rotate-180
+            "
           >
-            <Sparkles
-              size={18}
-
-              className="text-white"
-            />
+            <Sparkles size={18} className="text-white" />
           </div>
 
           <span
             className={`
+            font-semibold
+            tracking-tight
+            text-black
+            transition-all
+            duration-500
 
-font-semibold
+            ${scrolled ? "text-lg" : "text-xl"}
 
-tracking-tight
-
-text-black
-
-transition-all
-
-duration-500
-
-
-${scrolled ? "text-lg" : "text-xl"}
-
-`}
+            `}
           >
             CampusSign AI
           </span>
@@ -213,16 +180,11 @@ ${scrolled ? "text-lg" : "text-xl"}
 
         <div
           className="
-
-hidden
-
-lg:flex
-
-items-center
-
-gap-3
-
-"
+          hidden
+          lg:flex
+          items-center
+          gap-3
+          "
         >
           {navItems.map((item) => (
             <a
@@ -233,65 +195,48 @@ gap-3
               onClick={() => setActive(item.href.substring(1))}
 
               className={`
+              px-5
+              py-2.5
 
-relative
+              rounded-full
 
-px-5
+              border
 
-py-2.5
+              backdrop-blur-xl
 
+              text-sm
 
-rounded-full
+              font-medium
 
+              transition-all
 
-border
+              duration-500
 
-
-backdrop-blur-xl
-
-
-text-sm
-
-font-medium
-
-
-transition-all
-
-duration-500
-
-
-hover:-translate-y-1
+              hover:-translate-y-1
 
 
 
-${
-  active === item.href.substring(1)
-    ? `
+              ${
+                active === item.href.substring(1)
+                  ? `
+                bg-black
 
-bg-black
+                text-white
 
-text-white
+                border-black
 
-border-black
+                shadow-[0_12px_30px_rgba(0,0,0,.18)]
+                `
+                  : `
+                bg-white/40
 
-shadow-[0_12px_30px_rgba(0,0,0,.18)]
+                text-black/70
 
-`
-    : `
+                border-white/70
+                `
+              }
 
-bg-white/40
-
-text-black/70
-
-border-white/70
-
-shadow-[0_8px_25px_rgba(0,0,0,.06)]
-
-`
-}
-
-
-`}
+              `}
             >
               {item.name}
             </a>
@@ -302,47 +247,40 @@ shadow-[0_8px_25px_rgba(0,0,0,.06)]
 
         <div
           className="
-
-hidden
-
-lg:flex
-
-items-center
-
-gap-3
-
-"
+          hidden
+          lg:flex
+          items-center
+          gap-3
+          "
         >
           <div
             className="
+            rounded-full
 
-rounded-full
+            bg-white/40
 
-bg-white/40
+            border
 
-border
+            border-white/70
 
-border-white/70
+            backdrop-blur-xl
 
-backdrop-blur-xl
+            p-1
 
-p-1
+            flex
 
-flex
-
-gap-2
-
-"
+            gap-2
+            "
           >
-            <Button
-              variant="outline"
+            <Link href="/auth/login">
+              <Button variant="outline" size="sm">
+                Login
+              </Button>
+            </Link>
 
-              size="sm"
-            >
-              Login
-            </Button>
-
-            <Button size="sm">Get Started</Button>
+            <Link href="/auth/signup">
+              <Button size="sm">Get Started</Button>
+            </Link>
           </div>
         </div>
 
@@ -352,30 +290,29 @@ gap-2
           onClick={() => setMenuOpen(!menuOpen)}
 
           className="
+          lg:hidden
 
-lg:hidden
+          w-10
 
-w-10
+          h-10
 
-h-10
+          rounded-full
 
-rounded-full
+          bg-black
 
-bg-black
+          text-white
 
-text-white
+          flex
 
-flex
+          items-center
 
-items-center
+          justify-center
 
-justify-center
+          transition
 
-transition
+          hover:scale-110
 
-hover:scale-110
-
-"
+          "
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -386,47 +323,42 @@ hover:scale-110
       {menuOpen && (
         <div
           className="
+            absolute
 
-absolute
+            top-20
 
-top-20
+            right-0
 
-right-0
-
-w-72
-
-
-rounded-3xl
+            w-72
 
 
-bg-white/40
+            rounded-3xl
 
 
-backdrop-blur-3xl
+            bg-white/40
 
 
-border
-
-border-white/70
+            backdrop-blur-3xl
 
 
-p-5
+            border
+
+            border-white/70
 
 
-shadow-[0_30px_80px_rgba(0,0,0,.18)]
+            p-5
 
-"
+
+            shadow-[0_30px_80px_rgba(0,0,0,.18)]
+
+            "
         >
           <div
             className="
-
-flex
-
-flex-col
-
-gap-3
-
-"
+              flex
+              flex-col
+              gap-3
+              "
           >
             {navItems.map((item) => (
               <a
@@ -437,41 +369,65 @@ gap-3
                 onClick={() => setMenuOpen(false)}
 
                 className="
+                  px-5
+                  py-3.5
 
-px-5
+                  rounded-full
 
-py-3.5
+                  bg-white/40
 
+                  border
 
-rounded-full
+                  border-white/70
 
+                  text-black/80
 
-bg-white/40
+                  transition-all
 
+                  hover:bg-black
 
-border
+                  hover:text-white
 
-border-white/70
+                  hover:translate-x-2
 
-
-text-black/80
-
-
-transition-all
-
-
-hover:bg-black
-
-hover:text-white
-
-
-hover:translate-x-2
-
-"
+                  "
               >
                 {item.name}
               </a>
             ))}
+
+            <Link
+              href="/auth/login"
+              onClick={() => setMenuOpen(false)}
+
+              className="
+                px-5
+                py-3.5
+                rounded-full
+                bg-black
+                text-white
+                text-center
+                "
+            >
+              Login
+            </Link>
+
+            <Link
+              href="/auth/signup"
+              onClick={() => setMenuOpen(false)}
+
+              className="
+                px-5
+                py-3.5
+                rounded-full
+                bg-white/50
+                border
+                border-white/70
+                text-center
+                "
+            >
+              Get Started
+            </Link>
           </div>
         </div>
       )}
