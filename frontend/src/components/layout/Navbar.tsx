@@ -48,20 +48,27 @@ export default function Navbar() {
     };
   }, []);
 
+  // Active section observer
+
   useEffect(() => {
-    const sections = navItems.map((item) => document.querySelector(item.href));
+    const sections = navItems
+      .map((item) => document.querySelector(item.href))
+      .filter(Boolean);
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          setActive(visible.target.id);
+        }
       },
 
       {
-        threshold: 0.5,
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: [0, 0.25, 0.5, 1],
       },
     );
 
@@ -71,7 +78,9 @@ export default function Navbar() {
       }
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
