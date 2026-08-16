@@ -76,6 +76,12 @@ export default function Sidebar({ role }: SidebarProps) {
     },
 
     {
+      name: "Response",
+      href: "/staff/response",
+      icon: MessageSquare,
+    },
+
+    {
       name: "Translate",
       href: "/staff/translate",
       icon: Languages,
